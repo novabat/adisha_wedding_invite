@@ -39,7 +39,15 @@ a{color:#8a3a1c}a:hover{color:#5a1f10}
 .inv-p1{z-index:0}
 .inv-p2{z-index:1}
 .inv-p3{z-index:2}
-.inv-p1>img{transform-origin:73.6% 64.4%;transform:translate(calc(var(--inv-pan,0) * -23.6%),calc(var(--inv-pan,0) * -14.4%)) scale(var(--inv-zoom,1));will-change:transform}
+/* Page 1 background is a 3:4 picture. It covers the frame without stretching; any extra width is
+   cropped mostly from the right (12.5% of it from the left) so the couple stays in view, and any extra
+   height mostly from the top. The cropped parts sit just outside the frame, so the camera can pan into
+   them on the way to the temple doorway (60.5% across, 70.2% down the picture).
+   Keep these numbers in step with P1 in the script below. */
+.inv-p1>img{position:absolute;z-index:0;display:block;max-width:none;pointer-events:none;
+  width:max(100cqw, 75cqh);height:max(100cqh, calc(100cqw * 4 / 3));
+  left:calc((100cqw - max(100cqw, 75cqh)) * 0.125);top:calc((100cqh - max(100cqh, calc(100cqw * 4 / 3))) * 0.8);
+  transform-origin:60.5% 70.2%;transform:translate(var(--inv-p1x,0px),var(--inv-p1y,0px)) scale(var(--inv-zoom,1));will-change:transform}
 .inv-p1-text{opacity:var(--inv-t1,1)}
 .inv-p2{transform:translateY(calc(var(--inv-pin2,0) * -100%)) scale(var(--inv-s2,1));opacity:var(--inv-o2,1);will-change:transform,opacity}
 .inv-p2>img,.inv-p2>.inv-fade{transform-origin:50% 55%;transform:scale(var(--inv-zoom2,1));will-change:transform}
@@ -70,8 +78,8 @@ a{color:#8a3a1c}a:hover{color:#5a1f10}
 <div id="inv-p1" class="inv-snap" aria-hidden="true" style="top: 0"></div>
 <div id="inv-p2" class="inv-snap" aria-hidden="true" style="top: 100%"></div>
 <div id="inv-p3" class="inv-snap" aria-hidden="true" style="top: 200%"></div>
-<section id="inv-page-1" class="inv-page inv-p1" aria-label="Page 1" style="width: 100%; height: 100%; box-sizing: border-box; position: sticky; top: 0; display: flex; flex-direction: column; align-items: center; padding: calc(32 * var(--v)) 9cqw 0 24cqw; gap: 0">
-<img src="./assets/8088c05a1a60cbdd2d2733959b08bc07.webp" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; object-position: center center; display: block; z-index: 0; pointer-events: none">
+<section id="inv-page-1" class="inv-page inv-p1" aria-label="Page 1" style="width: 100%; height: 100%; box-sizing: border-box; position: sticky; top: 0; display: flex; flex-direction: column; align-items: center; padding: calc(34 * var(--v)) 5cqw 0 30cqw; gap: 0">
+<img src="./assets/da207f87bc4e8d42bd7cfd286952868c.webp" alt="" aria-hidden="true">
 <div class="inv-p1-text" style="position: relative; z-index: 1; width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0; color: #6b1d12; text-shadow: 0 0 12px rgba(255, 244, 222, 0.9)">
 <p class="inv-body inv-enter" style="font-size: calc(3.1 * var(--u)); font-weight: 400; line-height: 1.45; letter-spacing: 0.03em; max-width: calc(50 * var(--u)); text-wrap: balance; animation-delay: 0.3s">We are delighted to invite you to the</p>
 <h2 class="inv-head inv-enter" style="font-size: calc(8.5 * var(--u)); color: #6b1d12; margin-top: calc(2.6 * var(--u)); animation-delay: 0.45s">Wedding Ceremony</h2>
@@ -192,7 +200,7 @@ class Component extends DCLogic {
     this._el = t;
     const s = t.style;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      ['--inv-zoom', '--inv-pan', '--inv-t1', '--inv-o2', '--inv-pin2', '--inv-s2',
+      ['--inv-zoom', '--inv-p1x', '--inv-p1y', '--inv-t1', '--inv-o2', '--inv-pin2', '--inv-s2',
        '--inv-zoom2', '--inv-t2', '--inv-o3', '--inv-pin3', '--inv-s3', '--inv-t3'].forEach((k) => s.removeProperty(k));
       return;
     }
@@ -321,6 +329,26 @@ class Component extends DCLogic {
         { duration: 1000, delay: i * 170, easing: 'cubic-bezier(.22,.61,.36,1)', fill: 'backwards' });
     });
   }
+  // Page 1 camera: while zooming into the temple doorway, pull the doorway toward the centre of the
+  // frame, but only as far as the zoomed picture still covers every edge of the frame.
+  // Picture geometry mirrors the .inv-p1>img rule: 3:4, covering the frame, cropped 12.5% from the left
+  // and 80% from the top, doorway at 60.5% / 70.2% of the picture.
+  _p1Pan(W, H, zoom) {
+    if (!W || !H) return [0, 0];
+    const IW = Math.max(W, 0.75 * H), IH = Math.max(H, W * 4 / 3);
+    const L = (W - IW) * 0.125, T = (H - IH) * 0.8;
+    const ox = L + 0.605 * IW, oy = T + 0.702 * IH;          // doorway, in frame pixels
+    const fx = W / 2 - ox, fy = H / 2 - oy;                    // move that would centre it
+    // share of that move the picture allows at this zoom (it scales about the doorway)
+    const room = (o, lo, hi, size, f) => {
+      if (Math.abs(f) < 0.5) return 1;
+      const zLo = o - zoom * (o - lo), zHi = o + zoom * (hi - o);
+      return f < 0 ? (zHi - size) / -f : -zLo / f;
+    };
+    const k = Math.max(0, Math.min((zoom - 1) / 0.9, 1,
+      room(ox, L, L + IW, W, fx), room(oy, T, T + IH, H, fy)));
+    return [k * fx, k * fy];
+  }
   _paint() {
     const t = this._el;
     if (!t) return;
@@ -328,10 +356,10 @@ class Component extends DCLogic {
     const a = Math.min(1, this._shown);
     const b = Math.max(0, this._shown - 1);
     const zoom = 1 + 5 * a * a;
-    // pan the temple doorway toward the centre; never faster than the zoom can cover the frame
-    const pan = Math.min(1, (zoom - 1) / 0.9);
+    const [px, py] = this._p1Pan(t.clientWidth, t.clientHeight, zoom);
     s.setProperty('--inv-zoom', zoom.toFixed(4));
-    s.setProperty('--inv-pan', pan.toFixed(4));
+    s.setProperty('--inv-p1x', px.toFixed(2) + 'px');
+    s.setProperty('--inv-p1y', py.toFixed(2) + 'px');
     s.setProperty('--inv-t1', this._t1.toFixed(4));
     s.setProperty('--inv-o2', this._o2.toFixed(4));
     s.setProperty('--inv-s2', this._s2.toFixed(4));
