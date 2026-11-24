@@ -1,62 +1,50 @@
 # Aditya & Varsha — Wedding Invitation
 
-A three-page, scroll-animated wedding invitation, hosted as a static site on Cloudflare Pages.
+A three-page, scroll-animated wedding invitation, hosted as a static site on GitHub Pages.
 
 ## Project layout
 
 ```
 .
-├── public/                  ← the website (Cloudflare Pages build output directory)
-│   ├── index.html           the invitation: pages, styles and animation script
-│   ├── _runtime/            the small runtime that renders the page (React + support)
-│   ├── assets/              backgrounds, couple images and fonts (content-hashed names)
-│   ├── favicon.svg
-│   └── _headers             caching rules for Cloudflare Pages
+├── index.html           the invitation: pages, styles and animation script
+├── _runtime/            the small runtime that renders the page (React + support)
+├── assets/              backgrounds, couple images and fonts (content-hashed names)
+├── favicon.svg
+├── .nojekyll            tells GitHub Pages to serve files as-is (keeps _runtime/)
 ├── README.md
 ├── .gitignore
 └── .gitattributes
 ```
 
-There is no build step: everything in `public/` is served as-is.
+There is no build step: the repository root is served as-is.
+
+Keep `.nojekyll`. Without it, GitHub Pages skips folders whose names start with `_`,
+so `_runtime/` would be missing and the page would load blank.
 
 ## Preview locally
 
-The page needs to be served over HTTP (opening the file directly can block its scripts):
+The page needs to be served over HTTP (opening the file directly can block its scripts).
+From this folder:
 
 ```
-cd public
 python -m http.server 8000
 ```
 
 Then open http://localhost:8000.
 
-## Push to GitHub
+## Deploy on GitHub Pages
 
-Create an empty repository on GitHub (no README, no .gitignore), then from this folder:
+1. Push to `main` on GitHub (the repository must be public on a free GitHub plan).
+2. In the repository, open **Settings** → **Pages**.
+3. Under **Build and deployment**, set **Source** to **Deploy from a branch**,
+   then choose branch **main** and folder **/ (root)**, and **Save**.
+4. After a minute or two the site is live at
+   `https://<your-username>.github.io/<your-repo>/`. Every push to `main` redeploys it.
 
-```
-git init
-git add .
-git commit -m "Wedding invitation site"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
-```
-
-## Deploy on Cloudflare Pages
-
-1. In the Cloudflare dashboard, open **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**.
-2. Pick the GitHub repository, then **Begin setup**.
-3. Use these build settings:
-   - **Production branch:** `main`
-   - **Framework preset:** None
-   - **Build command:** *(leave blank)*
-   - **Build output directory:** `public`
-4. **Save and Deploy**. The site goes live on a `*.pages.dev` address; every push to `main` redeploys it.
-
-A custom domain can be added later under the project's **Custom domains** tab.
+A custom domain can be added later on the same **Pages** settings screen.
 
 ## Editing
 
-All content, layout and animation live in `public/index.html`. New images or fonts go in
-`public/assets/` and are referenced as `./assets/<file>`.
+All content, layout and animation live in `index.html`. New images or fonts go in
+`assets/` and are referenced as `./assets/<file>` (keep paths relative, without a leading `/`,
+so they work under the `/<your-repo>/` address).
