@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "invite",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-I",
+        "-c",
+        "import os,functools,http.server as h; h.ThreadingHTTPServer(('127.0.0.1',int(os.environ.get('PORT','8765'))), functools.partial(h.SimpleHTTPRequestHandler, directory='/private/tmp/claude-501/-Users-varsha-Documents-adisha-wedding-invite/cb7eab0c-f954-430c-8555-2fa932f15f26/scratchpad/site')).serve_forever()"
+      ],
+      "port": 8765
+    }
+  ]
+}
