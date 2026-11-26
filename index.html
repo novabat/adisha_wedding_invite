@@ -54,7 +54,7 @@ a{color:#8a3a1c}a:hover{color:#5a1f10}
   left:calc((100cqw - max(100cqw, 75cqh)) * 0.125);top:calc((100cqh - max(100cqh, calc(100cqw * 4 / 3))) * 0.8);
   transform-origin:60.5% 70.2%;transform:translate(var(--inv-p1x,0px),var(--inv-p1y,0px)) scale(var(--inv-zoom,1));will-change:transform}
 .inv-p1-text{opacity:var(--inv-t1,1)}
-.inv-p2{transform:translateY(calc(var(--inv-pin2,0) * -100%)) scale(var(--inv-s2,1));opacity:var(--inv-o2,1);will-change:transform,opacity}
+.inv-p2{transform:scale(var(--inv-s2,1));opacity:var(--inv-o2,1);will-change:transform,opacity}
 .inv-p2>img,.inv-p2>.inv-fade{transform-origin:50% 55%;transform:scale(var(--inv-zoom2,1));will-change:transform}
 .inv-p2-text{opacity:var(--inv-t2,1)}
 .inv-ev-card{position:relative;box-sizing:border-box;width:100%;display:flex;align-items:stretch;gap:calc(2.5 * var(--u));padding:calc(3 * var(--u));background:rgba(255,250,241,.62);border:1px solid rgba(184,134,11,.6);border-radius:calc(5 * var(--u));box-shadow:0 calc(1.4 * var(--u)) calc(3.5 * var(--u)) rgba(90,40,10,.14)}
@@ -89,14 +89,20 @@ a{color:#8a3a1c}a:hover{color:#5a1f10}
 .inv-info-note{font-family:'Alice',Georgia,serif;font-size:calc(3 * var(--fs));letter-spacing:.04em;color:#8a3a1c;margin-top:calc(0.4 * var(--u))}
 .inv-info-list{position:relative;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:calc(0.5 * var(--u))}
 .inv-info-list li{font-family:'Alice',Georgia,serif;font-size:calc(3.4 * var(--fs));line-height:1.3;color:#6b1d12}
-.inv-p3{transform:translateY(calc(var(--inv-pin3,0) * -100%)) scale(var(--inv-s3,1));opacity:var(--inv-o3,1);will-change:transform,opacity}
+.inv-p3{transform:scale(var(--inv-s3,1));opacity:var(--inv-o3,1);will-change:transform,opacity}
 /* page 3 -> 4: an exit. Scrolling down, the camera pushes into the courtyard's central doorway and the beach
    dissolves in; scrolling back up, it pushes into the shore temple and the courtyard settles back in.
    The zoom centres (--inv-org3 / --inv-org4) are set by the script. */
 .inv-p3>img,.inv-p3>.inv-fade{transform-origin:var(--inv-org3,50% 56%);transform:scale(var(--inv-zoom3,1));will-change:transform}
 .inv-p4{z-index:3;background-color:transparent}
-.inv-p4{transform:translateY(calc(var(--inv-pin4,0) * -100%));opacity:var(--inv-o4,1);will-change:transform,opacity}
+.inv-p4{opacity:var(--inv-o4,1);will-change:opacity}
 .inv-p4>img{transform-origin:var(--inv-org4,82.6% 61%);transform:scale(var(--inv-zoom4,1));will-change:transform}
+/* All four pages sit on top of each other at the top of the scroll area, each held in place by the browser
+   (position: sticky). Scrolling then never moves a visible page, in either direction; the script only fades
+   and zooms them. The spacer keeps the scroll length at four pages. With reduced motion the pages simply
+   follow one another instead. */
+.inv-spacer{height:0}
+@media (prefers-reduced-motion:no-preference){.inv-page+.inv-page{margin-top:-100cqh}.inv-spacer{height:300cqh}}
 @media (prefers-reduced-motion:reduce){.inv-p1>img,.inv-p2,.inv-p2>img,.inv-p2>.inv-fade,.inv-p3,.inv-p3>img,.inv-p3>.inv-fade,.inv-p4,.inv-p4>img{transform:none}.inv-p2,.inv-p3,.inv-p4,.inv-p1-text,.inv-p2-text,.inv-p3-text,.inv-p4-text{opacity:1}}
 .inv-phone{width:min(100vw, 45vh);width:min(100vw, 45dvh)}
 /* phones: fill the whole screen; backgrounds stretch, text keeps its proportions */
@@ -204,13 +210,14 @@ a{color:#8a3a1c}a:hover{color:#5a1f10}
 <div class="inv-ev-row"><dt>Kasi Yatra</dt><dd>6:00 AM</dd></div>
 <div class="inv-ev-row"><dt>Oonjal</dt><dd>6:30 AM</dd></div>
 <div class="inv-ev-row" style="font-weight: 700"><dt>Muhurtham</dt><dd>7:00&ndash;8:30 AM</dd></div>
+<div class="inv-ev-row"><dt>Lagnam</dt><dd>Rishabam</dd></div>
 </dl>
 </div>
 <div class="inv-ev-media"><img class="inv-ev-img inv-ev-img-right" style="height: calc(53.82 * var(--u)); margin: calc(-0.91 * var(--u))" src="./assets/111cffa7340154fe948fc5aeb2f2c2b9.webp" alt="Aditya and Varsha in traditional wedding attire"></div>
 </div>
 </div>
 </section>
-<section id="inv-page-4" class="inv-page inv-p4" aria-label="Page 4" style="width: 100%; height: 100%; box-sizing: border-box; position: relative; display: flex; flex-direction: column; align-items: center; padding: calc(20 * var(--v)) 8cqw 0; gap: 0">
+<section id="inv-page-4" class="inv-page inv-p4" aria-label="Page 4" style="width: 100%; height: 100%; box-sizing: border-box; position: sticky; top: 0; display: flex; flex-direction: column; align-items: center; padding: calc(20 * var(--v)) 8cqw 0; gap: 0">
 <img src="./assets/9f1f6d6c592fe874f5926190fc5eb493.webp" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; object-position: center center; display: block; z-index: 0; pointer-events: none">
 <div class="inv-fade" aria-hidden="true" style="background: linear-gradient(to bottom, rgba(251, 241, 222, 0.6) 0%, rgba(251, 241, 222, 0.5) 55%, rgba(251, 241, 222, 0.3) 100%)"></div>
 <div class="inv-p4-text inv-info">
@@ -245,6 +252,7 @@ a{color:#8a3a1c}a:hover{color:#5a1f10}
 </div>
 </div>
 </section>
+<div class="inv-spacer" aria-hidden="true"></div>
 </div>
 <nav aria-label="Pages" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 2px">
 <sc-for list="{{dots}}" as="dot" hint-placeholder-count="4">
@@ -301,9 +309,9 @@ class Component extends DCLogic {
     this._el = t;
     const s = t.style;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      ['--inv-zoom', '--inv-p1x', '--inv-p1y', '--inv-t1', '--inv-o2', '--inv-pin2', '--inv-s2',
-       '--inv-zoom2', '--inv-t2', '--inv-o3', '--inv-pin3', '--inv-s3', '--inv-t3',
-       '--inv-zoom3', '--inv-org3', '--inv-o4', '--inv-zoom4', '--inv-org4', '--inv-pin4', '--inv-t4'].forEach((k) => s.removeProperty(k));
+      ['--inv-zoom', '--inv-p1x', '--inv-p1y', '--inv-t1', '--inv-o2', '--inv-s2',
+       '--inv-zoom2', '--inv-t2', '--inv-o3', '--inv-s3', '--inv-t3',
+       '--inv-zoom3', '--inv-org3', '--inv-o4', '--inv-zoom4', '--inv-org4', '--inv-t4'].forEach((k) => s.removeProperty(k));
       return;
     }
     // Phones report fractional scroll positions and frame heights (especially with the address bar
@@ -313,12 +321,6 @@ class Component extends DCLogic {
     const near = Math.round(raw);
     const P = Math.min(3, Math.max(0, Math.abs(raw - near) * H < 2 ? near : raw));
     this._target = P;
-    // keep every later page pinned to the top of the screen until the scroll reaches it (its opacity decides
-    // whether it shows). Releasing it earlier would yank a page off-screen while it is still dissolving away,
-    // e.g. the beach mid-zoom when scrolling back from page 4 to page 3.
-    s.setProperty('--inv-pin2', (1 - Math.min(1, P)).toFixed(4));
-    s.setProperty('--inv-pin3', Math.max(0, 2 - P).toFixed(4));
-    s.setProperty('--inv-pin4', Math.max(0, 3 - P).toFixed(4));
     if (instant || this._shown == null) {
       const a = Math.min(1, P), b = Math.min(1, Math.max(0, P - 1)), c = Math.max(0, P - 2);
       this._shown = P;
