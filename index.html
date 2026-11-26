@@ -68,10 +68,10 @@ a{color:#8a3a1c}a:hover{color:#5a1f10}
 .inv-p3-text{opacity:var(--inv-t3,1)}
 /* page 3 rituals card: a short schedule, each ritual's name and time joined by a dotted gold leader */
 .inv-ev-sched{width:calc(60 * var(--u));max-width:100%;margin-top:calc(1.6 * var(--u));display:flex;flex-direction:column;gap:calc(0.9 * var(--u))}
-.inv-ev-row{display:flex;align-items:baseline;gap:calc(1.6 * var(--u));font-family:'Alice',Georgia,serif;font-size:calc(3.4 * var(--fs));line-height:1.3;letter-spacing:.02em}
+.inv-ev-row{display:flex;align-items:baseline;gap:calc(1.2 * var(--u));font-family:'Alice',Georgia,serif;font-size:calc(3.4 * var(--fs));line-height:1.3;letter-spacing:.02em}
 .inv-ev-row dt{margin:0;color:#6b1d12;white-space:nowrap}
 .inv-ev-row dd{margin:0;color:#8a3a1c;white-space:nowrap;letter-spacing:.04em}
-.inv-ev-row::after{content:'';order:1;flex:1;min-width:calc(3 * var(--u));border-bottom:1px dotted rgba(184,134,11,.75);transform:translateY(-.3em)}
+.inv-ev-row::after{content:'';order:1;flex:1;min-width:calc(2 * var(--u));border-bottom:1px dotted rgba(184,134,11,.75);transform:translateY(-.3em)}
 .inv-ev-row dd{order:2}
 /* page 4: travel info cards, stacked one below the other over a light wash like page 3's */
 .inv-p4-text{opacity:var(--inv-t4,1)}
@@ -189,7 +189,7 @@ a{color:#8a3a1c}a:hover{color:#5a1f10}
 <div class="inv-divider" aria-hidden="true"></div>
 <p class="inv-body" style="font-size: calc(4.6 * var(--fs)); line-height: 1.25; letter-spacing: 0.02em; color: #6b1d12">3rd April 2027</p>
 <dl class="inv-ev-sched" style="margin-bottom: 0">
-<div class="inv-ev-row"><dt>Viratham</dt><dd>7:00 AM</dd></div>
+<div class="inv-ev-row"><dt>Vratham</dt><dd>7:00 AM</dd></div>
 <div class="inv-ev-row"><dt>Veda Parayanam</dt><dd>9:30 AM</dd></div>
 <div class="inv-ev-row"><dt>Nichayathartham</dt><dd>11:00 AM</dd></div>
 </dl>
@@ -207,11 +207,14 @@ a{color:#8a3a1c}a:hover{color:#5a1f10}
 </div>
 <div class="inv-ev-card">
 <div class="inv-ev-text">
-<h2 class="inv-head" style="font-size: calc(7 * var(--fs)); color: #7a1f1a; white-space: nowrap">Muhurtham</h2>
+<h2 class="inv-head" style="font-size: calc(7 * var(--fs)); color: #7a1f1a; white-space: nowrap">Wedding Ceremony</h2>
 <div class="inv-divider" aria-hidden="true"></div>
-<p class="inv-body" style="font-size: calc(3.2 * var(--fs)); font-style: italic; line-height: 1.4; letter-spacing: 0.02em; color: #8a3a1c; text-wrap: balance">Join us as we tie the sacred knot</p>
-<p class="inv-body" style="font-size: calc(4.6 * var(--fs)); line-height: 1.25; letter-spacing: 0.02em; margin-top: calc(1.8 * var(--u)); color: #6b1d12">4th April 2027</p>
-<p class="inv-body" style="font-size: calc(3.4 * var(--fs)); line-height: 1.3; letter-spacing: 0.04em; margin-top: calc(0.5 * var(--u)); color: #8a3a1c">7:00 &ndash; 8:30 AM</p>
+<p class="inv-body" style="font-size: calc(4.6 * var(--fs)); line-height: 1.25; letter-spacing: 0.02em; color: #6b1d12">4th April 2027</p>
+<dl class="inv-ev-sched" style="margin-bottom: 0">
+<div class="inv-ev-row"><dt>Kasi Yatra</dt><dd>6:00 AM</dd></div>
+<div class="inv-ev-row"><dt>Oonjal</dt><dd>6:30 AM</dd></div>
+<div class="inv-ev-row" style="font-weight: 700"><dt>Muhurtham</dt><dd>7:00&ndash;8:30 AM</dd></div>
+</dl>
 </div>
 <div class="inv-ev-media"><img class="inv-ev-img inv-ev-img-right" style="height: calc(53.82 * var(--u)); margin: calc(-0.91 * var(--u))" src="./assets/111cffa7340154fe948fc5aeb2f2c2b9.webp" alt="Aditya and Varsha in traditional wedding attire"></div>
 </div>
