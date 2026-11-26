@@ -121,6 +121,11 @@ a{color:#8a3a1c}a:hover{color:#5a1f10}
 .inv-venue:hover .inv-venue-hint{text-decoration-color:currentColor}
 @keyframes inv-bounce-up{0%,100%{translate:0 0}45%{translate:0 calc(-1.6 * var(--u))}60%{translate:0 calc(-1.2 * var(--u))}}
 @media (prefers-reduced-motion:reduce){.inv-cue-btn{animation:none}}
+/* music button: top right on every page; shows a speaker with waves while the music plays, crossed out while it is off */
+.inv-audio{position:absolute;top:calc(10px + env(safe-area-inset-top, 0px));right:10px;z-index:5;width:36px;height:36px;padding:0;margin:0;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#7a2a14;border:1px solid rgba(232,196,120,.7);box-shadow:0 2px 8px rgba(70,25,8,.35);cursor:pointer;-webkit-tap-highlight-color:transparent;appearance:none}
+.inv-audio span,.inv-audio svg{width:20px;height:20px}
+.inv-audio svg{display:block}
+.inv-audio:focus-visible{outline:2px solid #b8860b;outline-offset:2px}
 @keyframes inv-fade-down{from{opacity:0;translate:0 calc(-4 * var(--u))}}
 .inv-enter{animation:inv-fade-down 1s cubic-bezier(.22,.61,.36,1) both}
 @media (prefers-reduced-motion:reduce){.inv-enter{animation:none}}
@@ -262,6 +267,10 @@ a{color:#8a3a1c}a:hover{color:#5a1f10}
 </a>
 </sc-for>
 </nav>
+<button type="button" class="inv-audio" onClick="{{toggleAudio}}" aria-label="{{audio.label}}" title="{{audio.label}}">
+<span style="{{audio.onStyle}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9.2h3.6L12 5v14l-4.9-4.2H3.5z" fill="#fbf1de"/><path d="M15.6 8.7a4.5 4.5 0 0 1 0 6.6M18.3 6.1a8.2 8.2 0 0 1 0 11.8" fill="none" stroke="#fbf1de" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+<span style="{{audio.offStyle}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9.2h3.6L12 5v14l-4.9-4.2H3.5z" fill="#fbf1de"/><path d="M15.5 9.5l5 5M20.5 9.5l-5 5" fill="none" stroke="#fbf1de" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+</button>
 </div>
 </div>
 </x-dc>
@@ -269,7 +278,7 @@ a{color:#8a3a1c}a:hover{color:#5a1f10}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { page: 0 };
+    this.state = { page: 0, audioOn: true };
   }
   componentDidMount() {
     this._tick = this._tick.bind(this);
@@ -289,11 +298,65 @@ class Component extends DCLogic {
     }
     // decode all images (backgrounds and the page 3 couples) in advance, so none is decoded mid-animation
     setTimeout(() => document.querySelectorAll('.inv-phone img').forEach((img) => { if (img.decode) img.decode().catch(() => {}); }), 0);
+    this._setupAudio();
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this._sync);
     if (this._ro) this._ro.disconnect();
     if (this._raf) cancelAnimationFrame(this._raf);
+    if (this._audio) {
+      this._audio.pause();
+      ['pointerup', 'touchend', 'click', 'keydown'].forEach((ev) => document.removeEventListener(ev, this._audioKick, true));
+      document.removeEventListener('visibilitychange', this._audioVis);
+      cancelAnimationFrame(this._fadeRaf);
+    }
+  }
+  // Background music, on from the start. Browsers only allow sound once the guest has interacted with the page,
+  // so it tries to start straight away and, if that is blocked, again on the guest's first tap or key press anywhere.
+  // The button shows the music as on until the guest mutes it, and once muted it stays muted.
+  // It pauses while the page is hidden (another tab or app) and resumes when the guest comes back.
+  _setupAudio() {
+    const a = new Audio('./assets/f71707d2eeef7945e68dc2098188e91c.mp3');
+    a.loop = true;
+    a.preload = 'auto';
+    this._audio = a;
+    this._audioWanted = true;
+    a.addEventListener('play', () => this._fadeInAudio());
+    this._audioKick = (e) => {
+      if (e && e.target && e.target.closest && e.target.closest('.inv-audio')) return; // the button handles itself
+      if (this._audioWanted && a.paused && !document.hidden) this._playAudio();
+    };
+    ['pointerup', 'touchend', 'click', 'keydown'].forEach((ev) => document.addEventListener(ev, this._audioKick, true));
+    this._audioVis = () => {
+      if (document.hidden) { if (!a.paused) { this._hiddenPause = true; a.pause(); } }
+      else if (this._hiddenPause) { this._hiddenPause = false; if (this._audioWanted) this._playAudio(); }
+    };
+    document.addEventListener('visibilitychange', this._audioVis);
+    this._playAudio();
+  }
+  _playAudio() {
+    const p = this._audio.play();
+    if (p && p.catch) p.catch(() => {}); // blocked until the guest interacts: the next tap tries again
+  }
+  // the track is mastered loud: ease it in to a gentler level (phones that fix the volume, like iPhones, ignore this)
+  _fadeInAudio() {
+    const a = this._audio, TARGET = 0.6;
+    cancelAnimationFrame(this._fadeRaf);
+    let v = 0;
+    const step = () => {
+      v = Math.min(TARGET, v + 0.01);
+      try { a.volume = v; } catch (e) {}
+      if (v < TARGET && !a.paused) this._fadeRaf = requestAnimationFrame(step);
+    };
+    step();
+  }
+  _toggleAudio() {
+    const a = this._audio;
+    if (!a) return;
+    this._audioWanted = !this._audioWanted;
+    if (this._audioWanted) this._playAudio();
+    else a.pause();
+    this.setState({ audioOn: this._audioWanted });
   }
   // Scroll transitions:
   //   page 1 -> 2: page 1 text fades, camera pushes into the temple doorway, page 2 dissolves in.
@@ -526,9 +589,16 @@ class Component extends DCLogic {
       label: 'Go to page ' + (i + 1),
       style: 'display:block;width:8px;height:' + (i === page ? '20px' : '8px') + ';border-radius:4px;background:' + accent + ';opacity:' + (i === page ? '0.9' : '0.4') + ';transition:height .25s ease,opacity .25s ease'
     }));
+    const audioOn = !!this.state.audioOn;
     return {
       accent,
       dots,
+      audio: {
+        label: audioOn ? 'Mute music' : 'Play music',
+        onStyle: audioOn ? 'display:block' : 'display:none',
+        offStyle: audioOn ? 'display:none' : 'display:block'
+      },
+      toggleAudio: () => this._toggleAudio(),
       onScroll: (e) => {
         const t = e.currentTarget;
         if (!t || !t.clientHeight) return;
