@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Varsha &amp; Aditya · Wedding Invitation</title>
+<meta name="description" content="You&#39;re invited to the wedding of Aditya &amp; Varsha on 3rd &amp; 4th April 2027 at Swagath Kalyana Mandapam, Palakkad.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aditya &amp; Varsha&#39;s Wedding">
+<meta property="og:description" content="Come celebrate with us">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Aditya &amp; Varsha&#39;s Wedding">
+<meta name="twitter:description" content="Come celebrate with us">
+<meta name="theme-color" content="#f3e2c4">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<script src="./_runtime/react.js"></script>
+<script src="./_runtime/react-dom.js"></script>
+<script src="./_runtime/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alice&amp;display=swap">
+<style>
+@font-face{font-family:'Frunchy';src:url(./assets/a023a1a1cd338caaad220255a4d1ca04.ttf) format('truetype');font-display:swap}
+@font-face{font-family:'Frunchy Bold';src:url(./assets/83dd8f972d880fe2f165dc1b7bc2ccb9.woff2) format('woff2');font-display:swap}
+html,body{margin:0;height:100%}
+.inv-phone{container-type:size;aspect-ratio:9/20}
+.inv-scroll{--u:min(1cqw, 0.45cqh);--v:0.45cqh;
+  /* text size unit: every font-size uses --fs, so this one factor scales all text on all pages */
+  --fs:calc(var(--u) * 1.15)}
+.inv-head{font-family:'Frunchy Bold','Frunchy',Georgia,serif;font-weight:400;margin:0;line-height:1.05}
+.inv-fade{position:absolute;inset:0;z-index:0;pointer-events:none}
+.inv-body{font-family:'Alice',Georgia,serif;font-weight:400;margin:0}
+a{color:#8a3a1c}a:hover{color:#5a1f10}
+.inv-root{height:100vh;height:100dvh}
+.inv-scroll{scroll-snap-type:y mandatory;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior:contain}
+.inv-scroll::-webkit-scrollbar{display:none}
+.inv-scroll{position:relative;isolation:isolate}
+.inv-snap{position:absolute;left:0;width:1px;height:100%;scroll-snap-align:start;scroll-snap-stop:always;pointer-events:none}
+.inv-page{background-color:#f3e2c4;overflow:hidden}
+.inv-p1{z-index:0}
+.inv-p2{z-index:1}
+.inv-p3{z-index:2}
+/* Page 1 background is a 3:4 picture. It covers the frame without stretching; any extra width is
+   cropped mostly from the right (12.5% of it from the left) so the couple stays in view, and any extra
+   height mostly from the top. The cropped parts sit just outside the frame, so the camera can pan into
+   them on the way to the temple doorway (60.5% across, 70.2% down the picture).
+   Keep these numbers in step with P1 in the script below. */
+.inv-p1>img{position:absolute;z-index:0;display:block;max-width:none;pointer-events:none;
+  width:max(100cqw, 75cqh);height:max(100cqh, calc(100cqw * 4 / 3));
+  left:calc((100cqw - max(100cqw, 75cqh)) * 0.125);top:calc((100cqh - max(100cqh, calc(100cqw * 4 / 3))) * 0.8);
+  transform-origin:60.5% 70.2%;transform:translate(var(--inv-p1x,0px),var(--inv-p1y,0px)) scale(var(--inv-zoom,1));will-change:transform}
+.inv-p1-text{opacity:var(--inv-t1,1)}
+.inv-p2{transform:scale(var(--inv-s2,1));opacity:var(--inv-o2,1);will-change:transform,opacity}
+.inv-p2>img,.inv-p2>.inv-fade{transform-origin:50% 55%;transform:scale(var(--inv-zoom2,1));will-change:transform}
+.inv-p2-text{opacity:var(--inv-t2,1)}
+.inv-ev-card{position:relative;box-sizing:border-box;width:100%;display:flex;align-items:stretch;gap:calc(2.5 * var(--u));padding:calc(3 * var(--u));background:rgba(255,250,241,.62);border:1px solid rgba(184,134,11,.6);border-radius:calc(5 * var(--u));box-shadow:0 calc(1.4 * var(--u)) calc(3.5 * var(--u)) rgba(90,40,10,.14)}
+.inv-ev-card+.inv-ev-card{margin-top:calc(4 * var(--u))}
+.inv-ev-card::before{content:'';position:absolute;inset:calc(1.4 * var(--u));border:1px solid rgba(184,134,11,.35);border-radius:calc(3.8 * var(--u));pointer-events:none}
+.inv-ev-media{position:relative;flex:none;display:flex;align-items:flex-end;justify-content:center;padding:0 calc(1.2 * var(--u))}
+.inv-ev-media::before{content:'';position:absolute;left:0;right:0;bottom:0;top:calc(5 * var(--u));border-radius:50% 50% calc(2.6 * var(--u)) calc(2.6 * var(--u))/calc(14 * var(--u)) calc(14 * var(--u)) calc(2.6 * var(--u)) calc(2.6 * var(--u));background:radial-gradient(ellipse at 50% 28%,rgba(253,240,218,.75) 0%,rgba(246,223,186,.7) 70%,rgba(239,208,162,.7) 100%);border:1px solid rgba(184,134,11,.45)}
+.inv-ev-img{position:relative;display:block;width:auto}
+.inv-ev-text{position:relative;flex:1;min-width:0;text-shadow:0 0 10px rgba(255,246,228,.95),0 0 3px rgba(255,246,228,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.inv-divider{width:calc(20 * var(--u));height:calc(2.4 * var(--u));margin:calc(1.4 * var(--u)) 0 calc(1.6 * var(--u));background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 14'%3E %3Cpath d='M3 7 C22 1 38 13 56 7' fill='none' stroke='%23b8860b' stroke-width='1.3' stroke-linecap='round'/%3E %3Cpath d='M117 7 C98 1 82 13 64 7' fill='none' stroke='%23b8860b' stroke-width='1.3' stroke-linecap='round'/%3E %3Ccircle cx='60' cy='7' r='2.2' fill='none' stroke='%23b8860b' stroke-width='1.1'/%3E%3C/svg%3E") center/contain no-repeat}
+.inv-p3-text{opacity:var(--inv-t3,1)}
+/* page 3 rituals card: a short schedule, each ritual's name and time joined by a dotted gold leader */
+.inv-ev-sched{width:calc(60 * var(--u));max-width:100%;margin-top:calc(1.6 * var(--u));display:flex;flex-direction:column;gap:calc(0.9 * var(--u))}
+.inv-ev-row{display:flex;align-items:baseline;gap:calc(1.2 * var(--u));font-family:'Alice',Georgia,serif;font-size:calc(3.4 * var(--fs));line-height:1.3;letter-spacing:.02em}
+.inv-ev-row dt{margin:0;color:#6b1d12;white-space:nowrap}
+.inv-ev-row dd{margin:0;color:#8a3a1c;white-space:nowrap;letter-spacing:.04em}
+.inv-ev-row::after{content:'';order:1;flex:1;min-width:calc(2 * var(--u));border-bottom:1px dotted rgba(184,134,11,.75);transform:translateY(-.3em)}
+.inv-ev-row dd{order:2}
+/* page 4: travel info cards, stacked one below the other over a light wash like page 3's */
+.inv-p4-text{opacity:var(--inv-t4,1)}
+.inv-info{position:relative;z-index:1;width:100%;display:grid;grid-template-columns:1fr;gap:calc(2.6 * var(--u))}
+.inv-info-card{position:relative;box-sizing:border-box;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;padding:calc(2.8 * var(--u)) calc(3.2 * var(--u)) calc(3 * var(--u));background:rgba(255,250,241,.72);border:1px solid rgba(184,134,11,.6);border-radius:calc(5 * var(--u));box-shadow:0 calc(1.4 * var(--u)) calc(3.5 * var(--u)) rgba(90,40,10,.14);text-shadow:0 0 10px rgba(255,246,228,.95),0 0 3px rgba(255,246,228,.9)}
+.inv-info-card::before{content:'';position:absolute;inset:calc(1.4 * var(--u));border:1px solid rgba(184,134,11,.35);border-radius:calc(3.8 * var(--u));pointer-events:none}
+.inv-info-wide{grid-column:1 / -1}
+.inv-info-card .inv-head{position:relative;font-size:calc(5.4 * var(--fs));color:#7a1f1a}
+.inv-info-card .inv-divider{position:relative;margin:calc(1 * var(--u)) 0 calc(1.4 * var(--u))}
+.inv-info-split{position:relative;width:100%;display:grid;grid-template-columns:1fr auto 1fr;column-gap:calc(3 * var(--u));align-items:start}
+.inv-info-split>span{align-self:stretch;width:1px;background:#b8860b;opacity:.5}
+.inv-info-item{display:flex;flex-direction:column;align-items:center;min-width:0}
+.inv-info-label{font-family:'Alice',Georgia,serif;font-size:calc(2.8 * var(--fs));font-style:italic;letter-spacing:.04em;color:#8a3a1c}
+.inv-info-main{font-family:'Alice',Georgia,serif;font-size:calc(3.4 * var(--fs));line-height:1.3;color:#6b1d12;margin-top:calc(0.6 * var(--u));text-wrap:balance}
+.inv-info-note{font-family:'Alice',Georgia,serif;font-size:calc(3 * var(--fs));letter-spacing:.04em;color:#8a3a1c;margin-top:calc(0.4 * var(--u))}
+.inv-info-list{position:relative;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:calc(0.5 * var(--u))}
+.inv-info-list li{font-family:'Alice',Georgia,serif;font-size:calc(3.4 * var(--fs));line-height:1.3;color:#6b1d12}
+.inv-p3{transform:scale(var(--inv-s3,1));opacity:var(--inv-o3,1);will-change:transform,opacity}
+/* page 3 -> 4: an exit. Scrolling down, the camera pushes into the courtyard's central doorway and the beach
+   dissolves in; scrolling back up, it pushes into the shore temple and the courtyard settles back in.
+   The zoom centres (--inv-org3 / --inv-org4) are set by the script. */
+.inv-p3>img,.inv-p3>.inv-fade{transform-origin:var(--inv-org3,50% 56%);transform:scale(var(--inv-zoom3,1));will-change:transform}
+.inv-p4{z-index:3;background-color:transparent}
+.inv-p4{opacity:var(--inv-o4,1);will-change:opacity}
+.inv-p4>img{transform-origin:var(--inv-org4,82.6% 61%);transform:scale(var(--inv-zoom4,1));will-change:transform}
+/* All four pages sit on top of each other at the top of the scroll area, each held in place by the browser
+   (position: sticky). Scrolling then never moves a visible page, in either direction; the script only fades
+   and zooms them. The spacer keeps the scroll length at four pages. With reduced motion the pages simply
+   follow one another instead. */
+.inv-spacer{height:0}
+@media (prefers-reduced-motion:no-preference){.inv-page+.inv-page{margin-top:-100cqh}.inv-spacer{height:300cqh}}
+@media (prefers-reduced-motion:reduce){.inv-p1>img,.inv-p2,.inv-p2>img,.inv-p2>.inv-fade,.inv-p3,.inv-p3>img,.inv-p3>.inv-fade,.inv-p4,.inv-p4>img{transform:none}.inv-p2,.inv-p3,.inv-p4,.inv-p1-text,.inv-p2-text,.inv-p3-text,.inv-p4-text{opacity:1}}
+.inv-phone{width:min(100vw, 45vh);width:min(100vw, 45dvh)}
+/* phones: fill the whole screen; backgrounds stretch, text keeps its proportions */
+@media (max-width:600px){.inv-phone{width:100%;height:100%;aspect-ratio:auto}}
+@media (min-width:601px){.inv-phone{box-shadow:0 20px 60px rgba(60,30,10,.25)}}
+/* page 1 scroll cue: bottom centre, a bouncing upward chevron over a short invitation; fades with page 1's text */
+.inv-cue{position:absolute;left:50%;bottom:calc(5 * var(--v) + env(safe-area-inset-bottom, 0px));z-index:1;transform:translateX(-50%);opacity:var(--inv-t1,1);text-decoration:none;-webkit-tap-highlight-color:transparent}
+.inv-cue-inner{display:flex;flex-direction:column;align-items:center;gap:calc(1.2 * var(--u));white-space:nowrap}
+.inv-cue-btn{display:flex;align-items:center;justify-content:center;width:calc(9 * var(--u));height:calc(9 * var(--u));border-radius:50%;background:#7a2a14;border:1px solid rgba(232,196,120,.7);box-shadow:0 calc(0.8 * var(--u)) calc(2.4 * var(--u)) rgba(70,25,8,.35);animation:inv-bounce-up 1.6s cubic-bezier(.45,0,.55,1) infinite}
+.inv-cue-chev{display:block;width:calc(4.2 * var(--u));height:calc(2.4 * var(--u));margin-top:calc(-0.4 * var(--u))}
+.inv-cue-text{font-family:'Alice',Georgia,serif;font-size:calc(3 * var(--fs));font-style:italic;letter-spacing:.06em;color:#6b1d12;opacity:.85;text-shadow:0 0 10px rgba(255,244,222,.95),0 0 3px rgba(255,244,222,.9)}
+/* page 1 venue: the name and a small hint below it form one link to the map */
+.inv-venue{display:flex;flex-direction:column;align-items:center;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.inv-venue:hover{color:inherit}
+.inv-venue-hint{font-family:'Alice',Georgia,serif;font-size:calc(2.6 * var(--fs));font-style:italic;letter-spacing:.04em;color:#8a3a1c;margin-top:calc(0.4 * var(--u));text-decoration:underline;text-decoration-color:rgba(138,58,28,.45);text-underline-offset:.2em}
+.inv-venue:hover .inv-venue-hint{text-decoration-color:currentColor}
+@keyframes inv-bounce-up{0%,100%{translate:0 0}45%{translate:0 calc(-1.6 * var(--u))}60%{translate:0 calc(-1.2 * var(--u))}}
+@media (prefers-reduced-motion:reduce){.inv-cue-btn{animation:none}}
+@keyframes inv-fade-down{from{opacity:0;translate:0 calc(-4 * var(--u))}}
+.inv-enter{animation:inv-fade-down 1s cubic-bezier(.22,.61,.36,1) both}
+@media (prefers-reduced-motion:reduce){.inv-enter{animation:none}}
+</style>
+</helmet>
+<div class="inv-root" style="width: 100%; display: flex; justify-content: center; align-items: center; background: #e9d6b4; font-family: 'Alice', Georgia, serif; color: #5a1f10; overflow: hidden">
+<div class="inv-phone" style="position: relative; overflow: hidden; background: #f3e2c4">
+<div class="inv-scroll" onScroll="{{onScroll}}" style="width: 100%; height: 100%">
+<div id="inv-p1" class="inv-snap" aria-hidden="true" style="top: 0"></div>
+<div id="inv-p2" class="inv-snap" aria-hidden="true" style="top: 100%"></div>
+<div id="inv-p3" class="inv-snap" aria-hidden="true" style="top: 200%"></div>
+<div id="inv-p4" class="inv-snap" aria-hidden="true" style="top: 300%"></div>
+<section id="inv-page-1" class="inv-page inv-p1" aria-label="Page 1" style="width: 100%; height: 100%; box-sizing: border-box; position: sticky; top: 0; display: flex; flex-direction: column; align-items: center; padding: calc(34 * var(--v) - 8 * var(--u)) 3cqw 0 33cqw; gap: 0">
+<img src="./assets/da207f87bc4e8d42bd7cfd286952868c.webp" alt="" aria-hidden="true">
+<div class="inv-p1-text" style="position: relative; z-index: 1; width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0; color: #6b1d12; text-shadow: 0 0 12px rgba(255, 244, 222, 0.9)">
+<p class="inv-body inv-enter inv-srj" style="font-size: calc(2.6 * var(--fs)); font-weight: 400; line-height: calc(5 * var(--u)); letter-spacing: 0.03em; white-space: nowrap; margin-bottom: calc(3 * var(--u)); animation-delay: 0.15s">|| Sri Rama Jayam ||</p>
+<p class="inv-body inv-enter" style="font-size: calc(3.1 * var(--fs)); font-weight: 400; line-height: 1.45; letter-spacing: 0.03em; max-width: calc(50 * var(--u)); text-wrap: balance; animation-delay: 0.3s">We are delighted to invite you to the</p>
+<h2 class="inv-head inv-enter" style="font-size: calc(8.5 * var(--fs)); color: #6b1d12; margin-top: calc(2.6 * var(--u)); animation-delay: 0.45s">Wedding Ceremony</h2>
+<p class="inv-body inv-enter" style="font-size: calc(3.2 * var(--fs)); font-weight: 400; font-style: italic; line-height: 1.3; letter-spacing: 0.06em; color: #8a3a1c; margin-top: calc(1.6 * var(--u)); animation-delay: 0.6s">of</p>
+<h1 class="inv-head inv-enter" style="font-size: calc(10.8 * var(--fs)); color: #6b1d12; margin-top: calc(1.4 * var(--u)); white-space: nowrap; animation-delay: 0.75s">Varsha &amp; Aditya</h1>
+<div class="inv-enter" aria-hidden="true" style="width: calc(22 * var(--u)); height: 1px; background: #b8860b; opacity: 0.7; margin: calc(3.2 * var(--u)) 0 calc(2.6 * var(--u)); animation-delay: 0.9s"></div>
+<p class="inv-body inv-enter" style="font-size: calc(3.2 * var(--fs)); font-weight: 400; font-style: italic; line-height: 1.3; letter-spacing: 0.06em; color: #8a3a1c; animation-delay: 1.05s">on</p>
+<p class="inv-body inv-enter" style="font-size: calc(4.8 * var(--fs)); font-weight: 400; line-height: 1.3; letter-spacing: 0.02em; margin-top: calc(0.8 * var(--u)); animation-delay: 1.2s">3rd &amp; 4th April 2027</p>
+<p class="inv-body inv-enter" style="font-size: calc(3.2 * var(--fs)); font-weight: 400; font-style: italic; line-height: 1.3; letter-spacing: 0.06em; color: #8a3a1c; margin-top: calc(2 * var(--u)); animation-delay: 1.35s">at</p>
+<a class="inv-venue inv-enter" href="https://maps.app.goo.gl/ZZGntm6tbPKRwaqH8" target="_blank" rel="noopener" aria-label="Swagath Kalyana Mandapam, Palakkad: open in Google Maps" style="margin-top: calc(0.8 * var(--u)); animation-delay: 1.5s">
+<p class="inv-body" style="font-size: calc(4.2 * var(--fs)); font-weight: 400; line-height: 1.35"><span style="display: block">Swagath Kalyana</span><span style="display: block">Mandapam, Palakkad</span></p>
+<span class="inv-venue-hint">(click to view on map)</span>
+</a>
+</div>
+<a class="inv-cue" href="#inv-p2" aria-label="Swipe up to celebrate with us: go to page 2">
+<span class="inv-cue-inner inv-enter" style="animation-delay: 1.9s">
+<span class="inv-cue-btn" aria-hidden="true"><svg class="inv-cue-chev" viewBox="0 0 28 16"><path d="M4 13 L14 4 L24 13" fill="none" stroke="#fbf1de" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="inv-cue-text">Swipe up to celebrate with us</span>
+</span>
+</a>
+</section>
+<section id="inv-page-2" class="inv-page inv-p2" aria-label="Page 2" style="width: 100%; height: 100%; box-sizing: border-box; position: sticky; top: 0; display: flex; flex-direction: column; align-items: center; padding: calc(56 * var(--v)) 8cqw 0; gap: 0">
+<img src="./assets/bf11987b24e1931fee8a6c7f1565af89.webp" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; object-position: center center; display: block; z-index: 0; pointer-events: none">
+<div class="inv-fade" aria-hidden="true" style="background: radial-gradient(ellipse 90cqw calc(80 * var(--v)) at 50% calc(110 * var(--v)), rgba(251, 241, 222, 0.94) 0%, rgba(251, 241, 222, 0.9) 60%, rgba(251, 241, 222, 0.6) 82%, rgba(251, 241, 222, 0) 100%)"></div>
+<div class="inv-p2-text" style="position: relative; z-index: 1; width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; color: #6b1d12; text-shadow: 0 0 12px rgba(255, 244, 222, 0.95)">
+<p class="inv-body" style="font-size: calc(3.8 * var(--fs)); font-weight: 400; line-height: 1.4; letter-spacing: 0.02em"><span style="display: block">Smt. Shanthi A. Iyer &amp;</span><span style="display: block">Sri. Ananthanarayan R. Iyer</span></p>
+<p class="inv-body" style="font-size: calc(3.3 * var(--fs)); font-weight: 400; font-style: italic; line-height: 1.5; letter-spacing: 0.02em; color: #8a3a1c; max-width: calc(68 * var(--u)); text-wrap: balance; margin-top: calc(3.6 * var(--u))">Cordially solicit your gracious presence with family and friends on the occasion of the marriage of their daughter</p>
+<h2 class="inv-head" style="font-size: calc(6.3 * var(--fs)); color: #6b1d12; line-height: 1.05; white-space: nowrap; margin-top: calc(4 * var(--u))">Sow. Varsha Iyer</h2>
+<p class="inv-body" style="font-size: calc(3.2 * var(--fs)); font-weight: 400; font-style: italic; line-height: 1.3; letter-spacing: 0.04em; color: #8a3a1c; margin-top: calc(3 * var(--u))">With</p>
+<h2 class="inv-head" style="font-size: calc(6.3 * var(--fs)); color: #6b1d12; line-height: 1.05; white-space: nowrap; margin-top: calc(3 * var(--u))">Chi. Aditya Ravishankar</h2>
+<p class="inv-body" style="font-size: calc(3.4 * var(--fs)); font-weight: 400; line-height: 1.4; letter-spacing: 0.02em; margin-top: calc(0.6 * var(--u))"><span style="display: block">S/o Smt. Sowmya Ravishankar &amp;</span><span style="display: block">Sri. K. Ravishankar</span></p>
+<p class="inv-body" style="font-size: calc(3.5 * var(--fs)); font-weight: 400; line-height: 1.4; letter-spacing: 0.02em; margin-top: calc(4 * var(--u))">on Sunday, 4th April 2027</p>
+<p class="inv-body" style="font-size: calc(3.5 * var(--fs)); font-weight: 400; line-height: 1.4; letter-spacing: 0.02em; white-space: nowrap">at Swagath Kalyana Mandapam, Palakkad</p>
+</div>
+</section>
+<section id="inv-page-3" class="inv-page inv-p3" aria-label="Page 3" style="width: 100%; height: 100%; box-sizing: border-box; position: sticky; top: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: calc(28 * var(--v)) 5cqw 0; gap: 0">
+<img src="./assets/6b06258620089f6acc7f4f5db55ada22.webp" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; object-position: center center; display: block; z-index: 0; pointer-events: none">
+<div class="inv-fade" aria-hidden="true" style="background: linear-gradient(to bottom, rgba(251, 241, 222, 0.6) 0%, rgba(251, 241, 222, 0.5) 55%, rgba(251, 241, 222, 0.3) 100%)"></div>
+<div class="inv-p3-text" style="position: relative; z-index: 1; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0">
+<h1 class="inv-head" style="font-size: calc(7.8 * var(--fs)); color: #6b1d12; white-space: nowrap; text-shadow: 0 0 12px rgba(255, 244, 222, 0.95)">Celebrations</h1>
+<div aria-hidden="true" style="display: flex; align-items: center; gap: calc(2 * var(--u)); margin: calc(1.8 * var(--u)) 0 calc(3.4 * var(--u))"><span style="display: block; width: calc(12 * var(--u)); height: 1px; background: #b8860b; opacity: 0.8"></span><span style="display: block; width: calc(1.5 * var(--u)); height: calc(1.5 * var(--u)); border: 1px solid #b8860b; transform: rotate(45deg)"></span><span style="display: block; width: calc(12 * var(--u)); height: 1px; background: #b8860b; opacity: 0.8"></span></div>
+<div class="inv-ev-card">
+<div class="inv-ev-text">
+<h2 class="inv-head" style="font-size: calc(7 * var(--fs)); color: #7a1f1a; white-space: nowrap">Rituals</h2>
+<div class="inv-divider" aria-hidden="true"></div>
+<p class="inv-body" style="font-size: calc(4.6 * var(--fs)); line-height: 1.25; letter-spacing: 0.02em; color: #6b1d12">3rd April 2027</p>
+<dl class="inv-ev-sched" style="margin-bottom: 0">
+<div class="inv-ev-row"><dt>Vratham</dt><dd>7:00 AM</dd></div>
+<div class="inv-ev-row"><dt>Veda Parayanam</dt><dd>9:30 AM</dd></div>
+<div class="inv-ev-row"><dt>Nichayathartham</dt><dd>11:00 AM</dd></div>
+</dl>
+</div>
+</div>
+<div class="inv-ev-card">
+<div class="inv-ev-media"><img class="inv-ev-img inv-ev-img-left" style="height: calc(54.3 * var(--u)); margin: calc(-1.15 * var(--u))" src="./assets/9c82694dc21f9e644a7398fc21cd8a0d.webp" alt="Aditya and Varsha dancing"></div>
+<div class="inv-ev-text">
+<h2 class="inv-head" style="font-size: calc(7 * var(--fs)); color: #7a1f1a; white-space: nowrap"><span style="display: block">Sangeet /</span><span style="display: block">Reception</span></h2>
+<div class="inv-divider" aria-hidden="true"></div>
+<p class="inv-body" style="font-size: calc(3.2 * var(--fs)); font-style: italic; line-height: 1.4; letter-spacing: 0.02em; color: #8a3a1c; text-wrap: balance">An evening of music, dance &amp; joy</p>
+<p class="inv-body" style="font-size: calc(4.6 * var(--fs)); line-height: 1.25; letter-spacing: 0.02em; margin-top: calc(1.8 * var(--u)); color: #6b1d12">3rd April 2027</p>
+<p class="inv-body" style="font-size: calc(3.4 * var(--fs)); line-height: 1.3; letter-spacing: 0.04em; margin-top: calc(0.5 * var(--u)); color: #8a3a1c">6 PM onwards</p>
+</div>
+</div>
+<div class="inv-ev-card">
+<div class="inv-ev-text">
+<h2 class="inv-head" style="font-size: calc(7 * var(--fs)); color: #7a1f1a; white-space: nowrap">Wedding Ceremony</h2>
+<div class="inv-divider" aria-hidden="true"></div>
+<p class="inv-body" style="font-size: calc(4.6 * var(--fs)); line-height: 1.25; letter-spacing: 0.02em; color: #6b1d12">4th April 2027</p>
+<dl class="inv-ev-sched" style="margin-bottom: 0">
+<div class="inv-ev-row"><dt>Kasi Yatra</dt><dd>6:00 AM</dd></div>
+<div class="inv-ev-row"><dt>Oonjal</dt><dd>6:30 AM</dd></div>
+<div class="inv-ev-row" style="font-weight: 700"><dt>Muhurtham</dt><dd>7:00&ndash;8:30 AM</dd></div>
+<div class="inv-ev-row"><dt>Lagnam</dt><dd>Rishabam</dd></div>
+</dl>
+</div>
+<div class="inv-ev-media"><img class="inv-ev-img inv-ev-img-right" style="height: calc(53.82 * var(--u)); margin: calc(-0.91 * var(--u))" src="./assets/111cffa7340154fe948fc5aeb2f2c2b9.webp" alt="Aditya and Varsha in traditional wedding attire"></div>
+</div>
+</div>
+</section>
+<section id="inv-page-4" class="inv-page inv-p4" aria-label="Page 4" style="width: 100%; height: 100%; box-sizing: border-box; position: sticky; top: 0; display: flex; flex-direction: column; align-items: center; padding: calc(20 * var(--v)) 8cqw 0; gap: 0">
+<img src="./assets/9f1f6d6c592fe874f5926190fc5eb493.webp" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; object-position: center center; display: block; z-index: 0; pointer-events: none">
+<div class="inv-fade" aria-hidden="true" style="background: linear-gradient(to bottom, rgba(251, 241, 222, 0.6) 0%, rgba(251, 241, 222, 0.5) 55%, rgba(251, 241, 222, 0.3) 100%)"></div>
+<div class="inv-p4-text inv-info">
+<div class="inv-info-card inv-info-wide">
+<h2 class="inv-head">How to Reach</h2>
+<div class="inv-divider" aria-hidden="true"></div>
+<div class="inv-info-split">
+<div class="inv-info-item"><span class="inv-info-label">Nearest airport</span><span class="inv-info-main">Coimbatore International Airport</span><span class="inv-info-note">~67 km</span></div>
+<span aria-hidden="true"></span>
+<div class="inv-info-item"><span class="inv-info-label">Nearest train station</span><span class="inv-info-main">Palakkad Junction</span><span class="inv-info-note">~2 km</span></div>
+</div>
+</div>
+<div class="inv-info-card">
+<h2 class="inv-head">Places to Stay</h2>
+<div class="inv-divider" aria-hidden="true"></div>
+</div>
+<div class="inv-info-card">
+<h2 class="inv-head">Taxi Service</h2>
+<div class="inv-divider" aria-hidden="true"></div>
+<span class="inv-info-main">RedTaxi App</span>
+<span class="inv-info-main">Kerala Savaari App</span>
+</div>
+<div class="inv-info-card inv-info-wide">
+<h2 class="inv-head">Places to Visit</h2>
+<div class="inv-divider" aria-hidden="true"></div>
+<ul class="inv-info-list">
+<li>Adiyogi, Coimbatore</li>
+<li>Palakkad Fort</li>
+<li>Malampuzha Dam</li>
+<li>Nelliyampathy Hills</li>
+</ul>
+</div>
+</div>
+</section>
+<div class="inv-spacer" aria-hidden="true"></div>
+</div>
+<nav aria-label="Pages" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 2px">
+<sc-for list="{{dots}}" as="dot" hint-placeholder-count="4">
+<a href="{{dot.href}}" aria-label="{{dot.label}}" style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; text-decoration: none">
+<span style="{{dot.style}}"></span>
+</a>
+</sc-for>
+</nav>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#8a3a1c","options":["#8a3a1c","#b8860b","#7a1f3d"]},"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { page: 0 };
+  }
+  componentDidMount() {
+    this._tick = this._tick.bind(this);
+    const el = document.querySelector('.inv-scroll');
+    if (el) this.applyTransition(el, true);
+    // The frame changes size whenever Chrome's address bar slides in or out (often mid-scroll).
+    // Re-read the position but let the transition carry on, so the next page's animation still plays.
+    this._sync = () => {
+      const s = document.querySelector('.inv-scroll');
+      if (s) this.applyTransition(s);
+    };
+    if (window.ResizeObserver && el) {
+      this._ro = new ResizeObserver(this._sync);
+      this._ro.observe(el);
+    } else {
+      window.addEventListener('resize', this._sync);
+    }
+    // decode all images (backgrounds and the page 3 couples) in advance, so none is decoded mid-animation
+    setTimeout(() => document.querySelectorAll('.inv-phone img').forEach((img) => { if (img.decode) img.decode().catch(() => {}); }), 0);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._sync);
+    if (this._ro) this._ro.disconnect();
+    if (this._raf) cancelAnimationFrame(this._raf);
+  }
+  // Scroll transitions:
+  //   page 1 -> 2: page 1 text fades, camera pushes into the temple doorway, page 2 dissolves in.
+  //   page 2 -> 3: page 2 text fades, camera moves down the corridor to its bright exit, page 3 dissolves in.
+  //   page 3 -> 4: page 3 cards fade, the camera pushes through the courtyard's doorway and the beach dissolves
+  //                in. Going back up, the camera pushes into the shore temple, the courtyard settles back in
+  //                and the cards play back in.
+  //   Going back up: the newer page dissolves away, the camera pulls back, then the text plays back in.
+  // The scroll position sets a target (0 = page 1 … 3 = page 4). The visuals move toward it
+  // no faster than one page-change per TRANSITION_SECONDS, so a quick flick still plays at this pace.
+  applyTransition(t, instant) {
+    const H = t.clientHeight;
+    if (!H) return;
+    this._el = t;
+    const s = t.style;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      ['--inv-zoom', '--inv-p1x', '--inv-p1y', '--inv-t1', '--inv-o2', '--inv-s2',
+       '--inv-zoom2', '--inv-t2', '--inv-o3', '--inv-s3', '--inv-t3',
+       '--inv-zoom3', '--inv-org3', '--inv-o4', '--inv-zoom4', '--inv-org4', '--inv-t4'].forEach((k) => s.removeProperty(k));
+      return;
+    }
+    // Phones report fractional scroll positions and frame heights (especially with the address bar
+    // showing), so a page that has snapped into place can read as 0.9996 instead of 1. Anything
+    // within 2px of a page counts as that page, so its entry animation fires on arrival.
+    const raw = t.scrollTop / H;
+    const near = Math.round(raw);
+    const P = Math.min(3, Math.max(0, Math.abs(raw - near) * H < 2 ? near : raw));
+    this._target = P;
+    if (instant || this._shown == null) {
+      const a = Math.min(1, P), b = Math.min(1, Math.max(0, P - 1)), c = Math.max(0, P - 2);
+      this._shown = P;
+      this._t1 = 1 - this._step(0, 0.3, a);
+      this._o2 = this._step(0.6, 0.96, a);
+      this._s2 = 1 + 0.12 * (1 - this._o2);
+      this._t2 = 1 - this._step(0, 0.3, b);
+      this._o3 = this._step(0.6, 0.96, b);
+      this._s3 = 1 + 0.12 * (1 - this._o3);
+      this._t3 = 1 - this._step(0, 0.3, c);
+      this._t4 = P === 3 ? 1 : 0;
+      this._paint();
+      return;
+    }
+    if (!this._raf) {
+      this._last = performance.now();
+      this._raf = requestAnimationFrame(this._tick);
+    }
+  }
+  _step(a, b, x) {
+    const k = Math.min(1, Math.max(0, (x - a) / (b - a)));
+    return k * k * (3 - 2 * k);
+  }
+  _tick(now) {
+    const TRANSITION_SECONDS = 1.5;
+    const dt = Math.min(0.05, Math.max(0, (now - this._last) / 1000));
+    this._last = now;
+    const d = this._target - this._shown;
+    if (this._shown === 2 && d > 0) this._dir4 = 1;       // leaving page 3: exit to the right
+    else if (this._shown === 3 && d < 0) this._dir4 = -1; // leaving page 4: exit to the left
+    const maxStep = dt / TRANSITION_SECONDS;
+    this._shown = Math.abs(d) <= maxStep ? this._target : this._shown + Math.sign(d) * maxStep;
+    const a = Math.min(1, this._shown);          // progress of page 1 -> 2
+    const b = Math.min(1, Math.max(0, this._shown - 1));  // progress of page 2 -> 3
+    const c = Math.max(0, this._shown - 2);      // progress of page 3 -> 4
+    if (d > 0) {
+      this._t1 = Math.min(this._t1, 1 - this._step(0, 0.3, a));
+      this._o2 = Math.max(this._o2, this._step(0.6, 0.96, a));
+      this._s2 = 1 + 0.12 * (1 - this._o2);
+      // arriving from page 1: page 2's text waits until the corridor has dissolved in,
+      // then plays its entry animation (see _replayPage2Text on arrival)
+      if (this._shown < 1 && this._o2 < 0.05) this._t2 = 0;
+      this._t2 = Math.min(this._t2, 1 - this._step(0, 0.3, b));
+      this._o3 = Math.max(this._o3, this._step(0.6, 0.96, b));
+      this._s3 = 1 + 0.12 * (1 - this._o3);
+      // page 3's cards likewise wait for the courtyard to dissolve in, then play in
+      if (this._shown < 2 && this._o3 < 0.05) this._t3 = 0;
+      // leaving the temple: page 3's cards fade first, then the camera exits to the beach
+      this._t3 = Math.min(this._t3, 1 - this._step(0, 0.3, c));
+      // page 4's cards wait until the beach has settled, then play in
+      if (this._shown < 3) this._t4 = 0;
+    } else if (d < 0) {
+      // leaving the beach: page 4's cards fade out first, before the camera moves
+      this._t4 = Math.min(this._t4, 1 - this._step(0, 0.2, 1 - c));
+      // the newer page dissolves away first; text stays hidden until the zoom-out has finished
+      this._o2 = Math.min(this._o2, this._step(0.8, 1, a));
+      this._o3 = Math.min(this._o3, this._step(0.8, 1, b));
+    }
+    this._paint();
+    if (this._shown === this._target) {
+      this._raf = 0;
+      if (this._shown === 0 && this._t1 < 1) this._replayPage1Text();
+      if (this._shown === 1 && this._t2 < 1) this._replayPage2Text();
+      if (this._shown === 2 && this._t3 < 1) this._replayPage3Cards();
+      if (this._shown === 3 && this._t4 < 1) this._replayPage4Cards();
+    } else {
+      this._raf = requestAnimationFrame(this._tick);
+    }
+  }
+  // replay page 1's entry animation (staggered fade from the top), skipping its initial 0.3s wait
+  _replayPage1Text() {
+    const t = this._el;
+    if (!t) return;
+    t.querySelectorAll('.inv-p1 .inv-enter').forEach((el) => {
+      if (el.getAnimations) el.getAnimations().forEach((an) => { an.currentTime = 300; an.play(); });
+    });
+    this._t1 = 1;
+    this._paint();
+  }
+  // page 2's entry animation: the same staggered fade from the top as page 1, line by line.
+  // Plays whenever page 2 is reached, from page 1 or from page 3.
+  _replayPage2Text() {
+    const t = this._el;
+    if (!t) return;
+    const txt = t.querySelector('.inv-p2-text');
+    this._t2 = 1;
+    this._paint();
+    if (!txt || !txt.animate) return;
+    const rows = Array.from(txt.children, (el) => [el]);
+    rows.forEach((row, i) => row.forEach((el) => {
+      if (el) el.animate([{ opacity: 0, translate: '0 -4cqw' }, { opacity: 1, translate: '0 0' }],
+        { duration: 1000, delay: i * 140, easing: 'cubic-bezier(.22,.61,.36,1)', fill: 'backwards' });
+    }));
+  }
+  // page 3's entry animation: title and ornament fade down; each card fades down, then its couple slides in from their side
+  _replayPage3Cards() {
+    const t = this._el;
+    if (!t) return;
+    this._t3 = 1;
+    this._paint();
+    const txt = t.querySelector('.inv-p3-text');
+    if (!txt) return;
+    const seq = [];
+    Array.from(txt.children).forEach((el) => {
+      if (el.classList.contains('inv-ev-card')) {
+        seq.push([el, '0, -4cqw']);
+        const img = el.querySelector('.inv-ev-img');
+        if (img) seq.push([img, img.classList.contains('inv-ev-img-left') ? '-5cqw, 0' : '5cqw, 0']);
+      } else {
+        seq.push([el, '0, -4cqw']);
+      }
+    });
+    seq.forEach(([el, from], i) => {
+      if (el.animate) el.animate([{ opacity: 0, transform: 'translate(' + from + ')' }, { opacity: 1, transform: 'translate(0, 0)' }],
+        { duration: 1000, delay: i * 170, easing: 'cubic-bezier(.22,.61,.36,1)', fill: 'backwards' });
+    });
+  }
+  // page 4's entry animation: the travel cards fade down one after another, top to bottom
+  _replayPage4Cards() {
+    const t = this._el;
+    if (!t) return;
+    this._t4 = 1;
+    this._paint();
+    const txt = t.querySelector('.inv-p4-text');
+    if (!txt) return;
+    Array.from(txt.children).forEach((el, i) => {
+      if (el.animate) el.animate([{ opacity: 0, transform: 'translate(0, -4cqw)' }, { opacity: 1, transform: 'translate(0, 0)' }],
+        { duration: 1000, delay: i * 170, easing: 'cubic-bezier(.22,.61,.36,1)', fill: 'backwards' });
+    });
+  }
+  // Page 1 camera: while zooming into the temple doorway, pull the doorway toward the centre of the
+  // frame, but only as far as the zoomed picture still covers every edge of the frame.
+  // Picture geometry mirrors the .inv-p1>img rule: 3:4, covering the frame, cropped 12.5% from the left
+  // and 80% from the top, doorway at 60.5% / 70.2% of the picture.
+  _p1Pan(W, H, zoom) {
+    if (!W || !H) return [0, 0];
+    const IW = Math.max(W, 0.75 * H), IH = Math.max(H, W * 4 / 3);
+    const L = (W - IW) * 0.125, T = (H - IH) * 0.8;
+    const ox = L + 0.605 * IW, oy = T + 0.702 * IH;          // doorway, in frame pixels
+    const fx = W / 2 - ox, fy = H / 2 - oy;                    // move that would centre it
+    // share of that move the picture allows at this zoom (it scales about the doorway)
+    const room = (o, lo, hi, size, f) => {
+      if (Math.abs(f) < 0.5) return 1;
+      const zLo = o - zoom * (o - lo), zHi = o + zoom * (hi - o);
+      return f < 0 ? (zHi - size) / -f : -zLo / f;
+    };
+    const k = Math.max(0, Math.min((zoom - 1) / 0.9, 1,
+      room(ox, L, L + IW, W, fx), room(oy, T, T + IH, H, fy)));
+    return [k * fx, k * fy];
+  }
+  _paint() {
+    const t = this._el;
+    if (!t) return;
+    const s = t.style;
+    const a = Math.min(1, this._shown);
+    const b = Math.min(1, Math.max(0, this._shown - 1));
+    const c = Math.max(0, this._shown - 2);
+    const zoom = 1 + 5 * a * a;
+    const [px, py] = this._p1Pan(t.clientWidth, t.clientHeight, zoom);
+    s.setProperty('--inv-zoom', zoom.toFixed(4));
+    s.setProperty('--inv-p1x', px.toFixed(2) + 'px');
+    s.setProperty('--inv-p1y', py.toFixed(2) + 'px');
+    s.setProperty('--inv-t1', this._t1.toFixed(4));
+    s.setProperty('--inv-o2', this._o2.toFixed(4));
+    s.setProperty('--inv-s2', this._s2.toFixed(4));
+    s.setProperty('--inv-zoom2', (1 + 4 * b * b).toFixed(4));
+    s.setProperty('--inv-t2', this._t2.toFixed(4));
+    s.setProperty('--inv-o3', this._o3.toFixed(4));
+    s.setProperty('--inv-s3', this._s3.toFixed(4));
+    s.setProperty('--inv-t3', this._t3.toFixed(4));
+    s.setProperty('--inv-t4', this._t4.toFixed(4));
+    // page 3 <-> 4 camera. Going down: push into the courtyard's central doorway, then the beach dissolves in
+    // and settles back from the shore temple. Going up: push into the shore temple, then the courtyard settles
+    // back from the doorway. Zoom centres are in picture percentages (both pictures fill the frame).
+    const DOOR = '50% 56%', SHORE_TEMPLE = '82.6% 61%';
+    s.setProperty('--inv-org3', DOOR);
+    s.setProperty('--inv-org4', SHORE_TEMPLE);
+    if (this._dir4 === -1) {
+      const e = 1 - c;                                 // progress of the way back
+      const r = 1 - this._step(0.5, 1, e);
+      s.setProperty('--inv-zoom4', (1 + 5 * e * e).toFixed(4));
+      s.setProperty('--inv-o4', (1 - this._step(0.55, 0.92, e)).toFixed(4));
+      s.setProperty('--inv-zoom3', (1 + 0.5 * r * r).toFixed(4));
+    } else {
+      const r = 1 - this._step(0.5, 1, c);
+      s.setProperty('--inv-zoom3', (1 + 5 * c * c).toFixed(4));
+      s.setProperty('--inv-o4', this._step(0.55, 0.92, c).toFixed(4));
+      s.setProperty('--inv-zoom4', (1 + 0.5 * r * r).toFixed(4));
+    }
+    const p2 = t.querySelector('.inv-p2');
+    if (p2) p2.style.pointerEvents = this._o2 < 0.99 ? 'none' : '';
+    const p3 = t.querySelector('.inv-p3');
+    if (p3) p3.style.pointerEvents = this._o3 < 0.99 ? 'none' : '';
+    const p4 = t.querySelector('.inv-p4');
+    if (p4) p4.style.pointerEvents = c < 0.99 ? 'none' : '';
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#8a3a1c';
+    const page = this.state.page;
+    const dots = [0, 1, 2, 3].map((i) => ({
+      href: '#inv-p' + (i + 1),
+      label: 'Go to page ' + (i + 1),
+      style: 'display:block;width:8px;height:' + (i === page ? '20px' : '8px') + ';border-radius:4px;background:' + accent + ';opacity:' + (i === page ? '0.9' : '0.4') + ';transition:height .25s ease,opacity .25s ease'
+    }));
+    return {
+      accent,
+      dots,
+      onScroll: (e) => {
+        const t = e.currentTarget;
+        if (!t || !t.clientHeight) return;
+        this.applyTransition(t);
+        const p = Math.round(t.scrollTop / t.clientHeight);
+        if (p !== this.state.page) this.setState({ page: p });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
